@@ -1,0 +1,62 @@
+# ---- OS / Editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Visual Studio artifacts
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+
+# ---- Build output (MSVC)
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Tt]emp/
+[Tt]mp/
+x64/
+x86/
+ARM*/
+Debug*/
+Release*/
+*.log
+*.tlog
+*.lastbuildstate
+
+# ---- Compiled binaries / libs
+*.exe
+*.dll
+*.lib
+*.exp
+
+# ---- MSVC intermediate files
+*.obj
+*.iobj
+*.pdb
+*.ipdb
+*.ilk
+*.idb
+*.pch
+*.rsp
+
+# ---- VS project user-specific
+*.vcxproj.user
+*.vcproj.*.user
+*.code-workspace
+
+# ---- CMake (如果用到)
+CMakeFiles/
+CMakeCache.txt
+cmake-build-*/
+build/
+out/
+compile_commands.json
+
+# ---- vcpkg / third-party
+vcpkg_installed/
+packages/
+installed/
