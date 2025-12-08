@@ -325,8 +325,6 @@ int main()
     printf("[调试] StartRun 返回(%s): %s\n", startOk ? "成功" : "失败", response);
     std::string recordId = ExtractRunningRecord(response);
 
-    OkReq okReq;
-
     if (recordId.empty()) {
         fprintf(stderr, "[错误] 解析 runningRecord 失败，响应内容: %s\n", response);
         return 1;
@@ -335,8 +333,8 @@ int main()
 
     // 时间轴模拟：每秒倒计时，OK 间隔 5 分钟，save 每 5 秒
     OkReq okReq;
-        okReq.userId = userId;
-        okReq.recordId = recordId;
+    okReq.userId = userId;
+    okReq.recordId = recordId;
 
     uint64_t startMs = NowMsEpoch();
     uint64_t endMsPlan = startMs + 25ull * 60ull * 1000ull;
