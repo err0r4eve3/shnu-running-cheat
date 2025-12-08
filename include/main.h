@@ -1,4 +1,3 @@
-// main.h
 #pragma once
 #include <windows.h>
 #include <tlhelp32.h>
@@ -8,6 +7,8 @@
 #include <vector>
 #include <chrono>
 #include <cmath>
+#include <random>
+#include <algorithm>
 
 #include "aobscan.h"
 #include "http.h"
@@ -19,18 +20,12 @@ using json = nlohmann::json;
 // 使用https://github.com/strengthen/AppletReverseTool逆向体锻打卡小程序 获取api接口以及相应请求数据结构
 
 static inline std::string dtoa_fixed(double v, int precision = 14) {
-    char buf[64];
-    auto res = std::to_chars(std::begin(buf), std::end(buf),
-        v, std::chars_format::fixed, precision);
-    return std::string(buf, res.ptr);
+    std::ostringstream oss;
+    oss.setf(std::ios::fixed);
+    oss.precision(precision);
+    oss << v;
+    return oss.str();
 }
-
-inline constexpr double Coords[4][2] = {
-    {121.51818147705078, 30.837721567871094},
-    {121.52092847705076, 30.834883567871294},
-    {121.51926147705322, 30.835872567871354},
-    {121.51749847705033, 30.835306567871091},
-};
 
 inline std::wstring MiniProgramHeadersForm() {
     return
