@@ -60,7 +60,7 @@ C++11 标准或更高
 ---
 ### 2025/12/09 更新
 原小程序更新
-1. 大量修改api路由名, **请求&&响应**结构, 结束跑步包需要上传完整的轨迹点数据
+1. 修改api**请求&&响应**结构, 结束跑步包需要上传完整的轨迹点数据
 2. 添加心跳包上报即时信息(userId, runningRecordId, mileage, speedAllocation, totalTime, timeLeft, nowtime, nowtimer)
 3. 添加了随机路线的api 但没开随机生成 几个打卡点还是写死的
 
