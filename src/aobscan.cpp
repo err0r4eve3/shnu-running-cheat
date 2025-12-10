@@ -26,12 +26,12 @@ const BYTE* aobscan(const BYTE* pattern, size_t patternLen, const BYTE* buffer, 
     return nullptr;
 }
 
-uintptr_t ScanProcessMemory(HANDLE hProcess, const BYTE* pattern, size_t patternLen, uintptr_t startAddr)
+uintptr_t ScanProcessMemory(HANDLE hProcess, const BYTE* pattern, size_t patternLen)
 {
     SYSTEM_INFO sysInfo;
     GetSystemInfo(&sysInfo);
 
-    uintptr_t addr = startAddr ? startAddr : (uintptr_t)sysInfo.lpMinimumApplicationAddress;
+    uintptr_t addr = (uintptr_t)sysInfo.lpMinimumApplicationAddress;
     uintptr_t maxAddr = (uintptr_t)sysInfo.lpMaximumApplicationAddress;
 
     MEMORY_BASIC_INFORMATION mbi;
@@ -47,9 +47,6 @@ uintptr_t ScanProcessMemory(HANDLE hProcess, const BYTE* pattern, size_t pattern
                 uintptr_t regionBase = (uintptr_t)mbi.BaseAddress;
 
                 SIZE_T offset = 0;
-                if (startAddr && startAddr > regionBase && startAddr < regionBase + regionSize) {
-                    offset = static_cast<SIZE_T>(startAddr - regionBase); // 从指定位置开始
-                }
                 while (offset < regionSize) {
                     SIZE_T toRead = min(bufferSize, regionSize - offset);
                     SIZE_T bytesRead = 0;
